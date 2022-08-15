@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Collections;
@@ -23,12 +24,15 @@ public class Card implements UserDetails {
     @GeneratedValue
     private UUID id;
 
+    @Size(min = 16, max = 16)
     @Column(nullable = false, unique = true)
     private String specialCode;
 
+    @Size(min = 3, max = 3)
     @Column(nullable = false)
     private Integer cvv;
 
+    @Size(min = 4, max = 4)
     @Column(nullable = false)
     private String pinCode;
 
